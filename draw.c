@@ -1,6 +1,59 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vimucchi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/03/01 17:42:22 by vimucchi          #+#    #+#             */
+/*   Updated: 2019/03/01 17:58:32 by vimucchi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 
-void  	ft_proj(t_mlx *mlx, int *xyz)
+void		ft_swap_xy(int *x1, int *x2, int *y1, int *y2)
+{
+	int		tmp;
+
+	tmp = *x2;
+	*x2 = *x1;
+	*x1 = tmp;
+	tmp = *y2;
+	*y2 = *y1;
+	*y1 = tmp;
+}
+
+void		ft_line(t_mlx *mlx, int color)
+{
+	int		x;
+	int		y;
+
+	if (mlx->p.x1 > mlx->p.x2)
+		ft_swap_xy(&(mlx->p.x1), &(mlx->p.x2), &(mlx->p.y1), &(mlx->p.y2));
+	if ((mlx->p.x2 - mlx->p.x1) > (mlx->p.y2 - mlx->p.y1))
+	{
+		x = mlx->p.x1;
+		while (x <= mlx->p.x2)
+		{
+			mlx->img.data[WIN_WIDTH * (mlx->p.y1 + ((mlx->p.y2 - mlx->p.y1) *
+			(x - mlx->p.x1)) / (mlx->p.x2 - mlx->p.x1)) + x] = color;
+			x++;
+		}
+	}
+	else if ((mlx->p.y2 - mlx->p.y1) > (mlx->p.x2 - mlx->p.x1))
+	{
+		y = mlx->p.y1;
+		while (y <= mlx->p.y2)
+		{
+			mlx->img.data[WIN_WIDTH * y + (mlx->p.x1 + ((mlx->p.x2 - mlx->p.x1)
+			* (y - mlx->p.y1)) / (mlx->p.y2 - mlx->p.y1))] = color;
+			y++;
+		}
+	}
+}
+
+void		ft_proj(t_mlx *mlx, int *xyz)
 {
 	int		a;
 	int		b;
@@ -19,8 +72,10 @@ void  	ft_proj(t_mlx *mlx, int *xyz)
 		b = 500;
 		mlx->p.x1 = (WIN_WIDTH * 2) / 5 + (a * xyz[0] - b * xyz[1]) / 1000;
 		mlx->p.x2 = (WIN_WIDTH * 2) / 5 + (a * xyz[3] - b * xyz[4]) / 1000;
-		mlx->p.y1 = WIN_HEIGHT / 5 - xyz[2] + ((a / 2) * xyz[0] + (b / 2) * xyz[1]) / 1000;
-		mlx->p.y2 = WIN_HEIGHT / 5 - xyz[5] + ((a / 2) * xyz[3] + (b / 2) * xyz[4]) / 1000;
+		mlx->p.y1 = WIN_HEIGHT / 5 - xyz[2] + ((a / 2) * xyz[0] + (b / 2)
+		* xyz[1]) / 1000;
+		mlx->p.y2 = WIN_HEIGHT / 5 - xyz[5] + ((a / 2) * xyz[3] + (b / 2)
+		* xyz[4]) / 1000;
 	}
 	color = 65535;
 	if (xyz[2] > 0 || xyz[5] > 0)
@@ -28,11 +83,11 @@ void  	ft_proj(t_mlx *mlx, int *xyz)
 	ft_line(mlx, color);
 }
 
-void			ft_draw_map(t_mlx *mlx)
+void		ft_draw_map(t_mlx *mlx)
 {
-	int 		x;
-	int 		y;
-	int			xyz[6];
+	int		x;
+	int		y;
+	int		xyz[6];
 
 	if (mlx->check == 0)
 	{
@@ -66,46 +121,5 @@ void			ft_draw_map(t_mlx *mlx)
 			x++;
 		}
 		y++;
-	}
-}
-
-void	ft_swap_xy(int *x1, int *x2, int *y1, int *y2)
-{
-	int	tmp;
-
-	tmp = *x2;
-	*x2 = *x1;
-	*x1 = tmp;
-	tmp = *y2;
-	*y2 = *y1;
-	*y1 = tmp;
-}
-
-void	ft_line(t_mlx *mlx, int color)
-{
-	int x;
-	int y;
-	t_coord p;
-
-	p = mlx->p;
-	if (p.x1 > p.x2)
-		ft_swap_xy(&(p.x1), &(p.x2), &(p.y1), &(p.y2));
-	if ((p.x2 - p.x1) > (p.y2 - p.y1))
-	{
-		x = p.x1;
-		while (x <= p.x2)
-		{
-			mlx->img.data[WIN_WIDTH * (p.y1 + ((p.y2 - p.y1) * (x - p.x1 )) / (p.x2 - p.x1)) + x] = color;
-			x++;
-		}
-	}
-	else if ((p.y2 - p.y1) > (p.x2- p.x1))
-	{
-		y = p.y1;
-		while (y <= p.y2)
-		{
-			mlx->img.data[WIN_WIDTH * y + (p.x1 + ((p.x2 - p.x1) * (y - p.y1)) / (p.y2 - p.y1))] = color;
-			y++;
-		}
 	}
 }
