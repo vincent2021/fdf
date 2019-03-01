@@ -2,7 +2,6 @@
 
 void	ft_proj_iso(t_mlx *mlx, int x1, int y1, int z1, int x2, int y2, int z2)
 {
-	t_coord p;
 	int a;
 	int b;
 	int color;
@@ -13,20 +12,19 @@ void	ft_proj_iso(t_mlx *mlx, int x1, int y1, int z1, int x2, int y2, int z2)
 	b = 500;
 	offset_x = (WIN_WIDTH * 2) / 5;
 	offset_y = WIN_HEIGHT / 5;
-	p.x1 = offset_x + (a * x1 - b * y1) / 1000;
-	p.x2 = offset_x + (a * x2 - b * y2) / 1000;
-	p.y1 = offset_y -z1 + ((a / 2) * x1 + (b / 2) * y1) / 1000;
-	p.y2 = offset_y -z2 + ((a / 2) * x2 + (b / 2) * y2) / 1000;
+	mlx->p.x1 = offset_x + (a * x1 - b * y1) / 1000;
+	mlx->p.x2 = offset_x + (a * x2 - b * y2) / 1000;
+	mlx->p.y1 = offset_y -z1 + ((a / 2) * x1 + (b / 2) * y1) / 1000;
+	mlx->p.y2 = offset_y -z2 + ((a / 2) * x2 + (b / 2) * y2) / 1000;
 	color = 65535;
 	if (z1 > 0 || z2 > 0)
 		color = 16761035;
-	ft_line(mlx, p, color);
+	ft_line(mlx, color);
 
 }
 
 void  ft_proj_p(t_mlx *mlx, int x1, int y1, int z1, int x2, int y2, int z2)
 {
-	t_coord p;
 	int a;
 	int color;
 	int	offset_x;
@@ -35,14 +33,14 @@ void  ft_proj_p(t_mlx *mlx, int x1, int y1, int z1, int x2, int y2, int z2)
 	a = 500;
 	offset_x = WIN_WIDTH / (mlx->map.x_tab + 1);
 	offset_y = WIN_HEIGHT / (mlx->map.y_tab + 1);
-	p.x1 = offset_x + x1 + (a * z1) / 1000;
-	p.x2 = offset_x + x2 + (a * z2) / 1000;
-	p.y1 = offset_y + y1 + (a * z1) / 2000;
-	p.y2 = offset_y +  y2 + (a * z2) / 2000;
+	mlx->p.x1 = offset_x + x1 + (a * z1) / 1000;
+	mlx->p.x2 = offset_x + x2 + (a * z2) / 1000;
+	mlx->p.y1 = offset_y + y1 + (a * z1) / 2000;
+	mlx->p.y2 = offset_y + y2 + (a * z2) / 2000;
 	color = 65535;
 	if (z1 > 0 || z2 > 0)
 		color = 16761035;
-	ft_line(mlx, p, color);
+	ft_line(mlx, color);
 }
 
 void		ft_draw_map(t_mlx *mlx)
@@ -102,11 +100,13 @@ void	ft_swap_xy(int *x1, int *x2, int *y1, int *y2)
 	*y1 = tmp;
 }
 
-void	ft_line(t_mlx *mlx, t_coord p, int color)
+void	ft_line(t_mlx *mlx, int color)
 {
 	int x;
 	int y;
-
+	t_coord p;
+	
+	p = mlx->p;
 	if (p.x1 > p.x2)
 		ft_swap_xy(&(p.x1), &(p.x2), &(p.y1), &(p.y2));
 	if ((p.x2 - p.x1) > (p.y2 - p.y1))

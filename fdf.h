@@ -65,7 +65,7 @@ t_line 				*ft_get_map(int fd);
 t_parse				ft_get_tab(t_line *str);
 
 void				ft_draw_map(t_mlx *mlx);
-void				ft_line(t_mlx *mlx, t_coord p, int color);
+void				ft_line(t_mlx *mlx, int color);
 
 void	get_img(t_mlx *mlx);
 void	fill_pixel(t_img *img);
