@@ -49,9 +49,9 @@ typedef struct		s_mlx
 	void			*ptr;
 	void			*wdw;
 	int				check;
-	t_img			*img;
-	t_parse			*map;
-	t_zoom			*zoom;
+	t_img			img;
+	t_parse			map;
+	t_zoom			zoom;
 }					t_mlx;
 
 typedef struct		s_coord
@@ -65,10 +65,10 @@ typedef struct		s_coord
 }					t_coord;
 
 t_line 				*ft_get_map(int fd);
-t_parse				*ft_get_tab(t_line *str);
+t_parse				ft_get_tab(t_line *str);
 
 void				ft_draw_map(t_mlx *mlx, char c);
-void				ft_line(t_mlx *mlx, t_coord *p, int color);
+void				ft_line(t_mlx *mlx, t_coord p, int color);
 
 void	get_img(t_mlx *mlx);
 void	fill_pixel(t_img *img);

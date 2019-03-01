@@ -6,7 +6,7 @@
 /*   By: vimucchi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/25 20:00:47 by vimucchi          #+#    #+#             */
-/*   Updated: 2019/02/25 20:17:05 by vimucchi         ###   ########.fr       */
+/*   Updated: 2019/03/01 15:10:47 by vimucchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,30 +61,28 @@ int			ft_check_map(t_line *line)
 	return (nb_line);
 }
 
-t_parse		*ft_get_tab(t_line *line)
+t_parse		ft_get_tab(t_line *line)
 {
-	t_parse	*map;
+	t_parse	map;
 	int		i;
 	int		j;
 
-	map = malloc(sizeof(t_parse));
-	map->y_tab = ft_check_map(line);
-	map->x_tab = line->x_str;
-	if (!(map->tab = malloc(sizeof(int **) * map->y_tab)))
-		return (0);
+	map.y_tab = ft_check_map(line);
+	map.x_tab = line->x_str;
+	map.tab = malloc(sizeof(int **) * map.y_tab);
 	j = 0;
 	while (line->next)
 	{
-		map->tab[j] = malloc(sizeof(int *) * line->x_str);
+		map.tab[j] = malloc(sizeof(int *) * line->x_str);
 		i = 0;
 		while (i < line->x_str)
 		{
-			map->tab[j][i] = ft_atoi(line->str[i]);
+			map.tab[j][i] = ft_atoi(line->str[i]);
 			i++;
 		}
 		j++;
 		line = line->next;
 	}
-	map->tab[j] = 0;
+	map.tab[j] = 0;
 	return (map);
 }
