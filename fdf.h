@@ -6,7 +6,7 @@
 /*   By: vimucchi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/02 17:17:01 by vimucchi          #+#    #+#             */
-/*   Updated: 2019/03/02 18:59:11 by vimucchi         ###   ########.fr       */
+/*   Updated: 2019/03/02 20:36:19 by vimucchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ typedef struct		s_line
 {
 	char			**str;
 	int				x_str;
-	int				y_str;
 	struct s_line	*next;
 }					t_line;
 

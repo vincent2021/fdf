@@ -6,7 +6,7 @@
 /*   By: vimucchi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/25 20:00:47 by vimucchi          #+#    #+#             */
-/*   Updated: 2019/03/02 20:23:00 by vimucchi         ###   ########.fr       */
+/*   Updated: 2019/03/02 22:18:35 by vimucchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,10 @@ t_line		*ft_get_map(int fd)
 		while (lst->str[i])
 			i++;
 		lst->x_str = i;
-		lst->next = malloc(sizeof(t_line));
+		if (!(lst->next = malloc(sizeof(t_line))))
+			return (0);
 		lst = lst->next;
-		lst->y_str++;
+		lst->str = NULL;
 		free(line);
 	}
 	lst->next = NULL;
@@ -42,17 +43,15 @@ t_line		*ft_get_map(int fd)
 int			ft_check_map(t_line *line)
 {
 	t_line	*tmp;
-	int		x;
 	int		nb_line;
 
 	tmp = line;
 	nb_line = 0;
-	x = line->x_str;
 	while (tmp->next)
 	{
-		if (x != tmp->x_str)
+		if (line->x_str != tmp->x_str)
 		{
-			write(2, "Error: The file is invalid\n", 27);
+			write(2, "Error: The map is invalid\n", 26);
 			exit(1);
 		}
 		tmp = tmp->next;
@@ -65,18 +64,18 @@ int			ft_free_lst(t_line *line)
 {
 	int		i;
 
-	printf("%p ", line->next);
-	if (line->next->next != NULL)
+	if (line->next != NULL)
 		ft_free_lst(line->next);
 	i = 0;
-	printf("str:%p\n", line->str);
-	printf("stri:%s\n", line->str[0]);
 	while (line->str && line->str[i])
 	{
-		printf("%s:", line->str[i]);
 		free(line->str[i]);
 		i++;
 	}
+	if (line->str)
+		free(line->str);
+	if (line)
+		free(line);
 	return (0);
 }
 
@@ -104,7 +103,6 @@ t_parse		ft_get_tab(t_line *line)
 		j++;
 		line = line->next;
 	}
-	map.tab[j] = 0;
 	ft_free_lst(begin);
 	return (map);
 }
