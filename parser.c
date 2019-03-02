@@ -6,7 +6,7 @@
 /*   By: vimucchi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/25 20:00:47 by vimucchi          #+#    #+#             */
-/*   Updated: 2019/03/01 15:10:47 by vimucchi         ###   ########.fr       */
+/*   Updated: 2019/03/02 20:23:00 by vimucchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ int			ft_check_map(t_line *line)
 	x = line->x_str;
 	while (tmp->next)
 	{
-		if (x != line->x_str)
+		if (x != tmp->x_str)
 		{
-			write(2, "Error:\nThe file is invalid", 26);
+			write(2, "Error: The file is invalid\n", 27);
 			exit(1);
 		}
 		tmp = tmp->next;
@@ -61,12 +61,33 @@ int			ft_check_map(t_line *line)
 	return (nb_line);
 }
 
+int			ft_free_lst(t_line *line)
+{
+	int		i;
+
+	printf("%p ", line->next);
+	if (line->next->next != NULL)
+		ft_free_lst(line->next);
+	i = 0;
+	printf("str:%p\n", line->str);
+	printf("stri:%s\n", line->str[0]);
+	while (line->str && line->str[i])
+	{
+		printf("%s:", line->str[i]);
+		free(line->str[i]);
+		i++;
+	}
+	return (0);
+}
+
 t_parse		ft_get_tab(t_line *line)
 {
 	t_parse	map;
+	t_line	*begin;
 	int		i;
 	int		j;
 
+	begin = line;
 	map.y_tab = ft_check_map(line);
 	map.x_tab = line->x_str;
 	map.tab = malloc(sizeof(int **) * map.y_tab);
@@ -84,5 +105,6 @@ t_parse		ft_get_tab(t_line *line)
 		line = line->next;
 	}
 	map.tab[j] = 0;
+	ft_free_lst(begin);
 	return (map);
 }
