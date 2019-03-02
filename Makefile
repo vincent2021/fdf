@@ -16,11 +16,12 @@ OBJ_PATH = ./
 INC = -I /usr/local/include
 LDFLAGS = -L ./minilibx -L ./libft
 LDLIBS = -lmlx -framework OpenGL -framework AppKit -lft
-CFLAGS = -g3 -Wall -Wextra -Werror 
+CFLAGS = -g3 -Wall -Wextra -Werror
 CC = gcc
 SRC = main.c \
 	parser.c \
 	draw.c \
+	key.c
 
 all: $(NAME)
 

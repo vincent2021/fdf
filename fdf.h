@@ -6,7 +6,7 @@
 /*   By: vimucchi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/02 17:17:01 by vimucchi          #+#    #+#             */
-/*   Updated: 2019/03/02 17:29:15 by vimucchi         ###   ########.fr       */
+/*   Updated: 2019/03/02 18:41:18 by vimucchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,11 @@
 # include "libft/includes/libft.h"
 # include "libft/includes/get_next_line.h"
 # include <fcntl.h>
-# include <math.h>
 
 # define WIN_WIDTH 1920
 # define WIN_HEIGHT 1080
+# define NOEVENTMASK 0L
+# define DESTROYNOTIFY 17
 
 typedef struct		s_line
 {
@@ -74,5 +75,7 @@ typedef struct		s_mlx
 t_line				*ft_get_map(int fd);
 t_parse				ft_get_tab(t_line *str);
 void				ft_init_map(t_mlx *mlx);
+int					keyboard(int key, t_mlx *mlx);
+int					ft_exit(t_mlx *mlx);
 
 #endif
