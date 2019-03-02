@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fdf.h                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vimucchi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/03/02 17:17:01 by vimucchi          #+#    #+#             */
+/*   Updated: 2019/03/02 17:29:15 by vimucchi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FDF_H
 # define FDF_H
 
@@ -52,21 +64,15 @@ typedef struct		s_mlx
 {
 	void			*ptr;
 	void			*wdw;
-	int				check;
+	int				init;
 	char			proj;
 	t_img			img;
 	t_parse			map;
 	t_coord			p;
 }					t_mlx;
 
-t_line 				*ft_get_map(int fd);
+t_line				*ft_get_map(int fd);
 t_parse				ft_get_tab(t_line *str);
-
-void				ft_draw_map(t_mlx *mlx);
-void				ft_line(t_mlx *mlx, int color);
-
-void	get_img(t_mlx *mlx);
-void	fill_pixel(t_img *img);
-
+void				ft_init_map(t_mlx *mlx);
 
 #endif
