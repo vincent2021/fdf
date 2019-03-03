@@ -6,7 +6,7 @@
 /*   By: vimucchi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 17:42:22 by vimucchi          #+#    #+#             */
-/*   Updated: 2019/03/03 21:45:46 by vimucchi         ###   ########.fr       */
+/*   Updated: 2019/03/03 20:55:19 by vimucchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,7 @@ void		ft_line(t_mlx *mlx, int color)
 		{
 			if (mlx->p.x2 == mlx->p.x1)
 				printf("(div0 x2-x1) = %d\n", mlx->p.x2 - mlx->p.x1);
-			else
-				mlx->img.data[WIN_WIDTH * (mlx->p.y1 + ((mlx->p.y2 - mlx->p.y1) *
-				(x - mlx->p.x1)) / (mlx->p.x2 - mlx->p.x1)) + x] = color;
+			mlx_pixel_put(mlx->ptr, mlx->wdw, x,  mlx->p.y1 + ((mlx->p.y2 - mlx->p.y1) * (x - mlx->p.x1)) / (mlx->p.x2 - mlx->p.x1), color);	
 			x++;
 		}
 	}
@@ -51,9 +49,7 @@ void		ft_line(t_mlx *mlx, int color)
 		{
 			if (mlx->p.y2 == mlx->p.y1)
 				printf("(div0 y2-y1) = %d\n", mlx->p.y2 - mlx->p.y1);
-			else 
-				mlx->img.data[WIN_WIDTH * y + (mlx->p.x1 + ((mlx->p.x2 - mlx->p.x1)
-							* (y - mlx->p.y1)) / (mlx->p.y2 - mlx->p.y1))] = color;
+			mlx_pixel_put(mlx->ptr, mlx->wdw, mlx->p.x1 + ((mlx->p.x2 - mlx->p.x1) * (y - mlx->p.y1)) / (mlx->p.y2 - mlx->p.y1), y, color);	
 			y++;
 		}
 	}
