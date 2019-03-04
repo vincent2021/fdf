@@ -6,7 +6,7 @@
 /*   By: vimucchi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/25 19:55:09 by vimucchi          #+#    #+#             */
-/*   Updated: 2019/03/03 21:01:58 by vimucchi         ###   ########.fr       */
+/*   Updated: 2019/03/04 18:13:25 by vimucchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int			ft_exit(t_mlx *mlx)
 {
+	mlx_destroy_image(mlx->ptr, mlx->img.img_ptr);
 	mlx_destroy_window(mlx->ptr, mlx->wdw);
 	exit(1);
 }

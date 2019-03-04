@@ -6,7 +6,7 @@
 /*   By: vimucchi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 17:42:22 by vimucchi          #+#    #+#             */
-/*   Updated: 2019/03/04 16:56:45 by vimucchi         ###   ########.fr       */
+/*   Updated: 2019/03/04 18:14:31 by vimucchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,8 @@ void		ft_line(t_mlx *mlx, int color)
 		x = mlx->p.x1;
 		while (x <= mlx->p.x2)
 		{
-			if (mlx->p.x2 == mlx->p.x1)
-				printf("(div0 x2-x1) = %d\n", mlx->p.x2 - mlx->p.x1);
-			else
-				mlx->img.data[WIN_WIDTH * (mlx->p.y1 + ((mlx->p.y2 - mlx->p.y1) *
-				(x - mlx->p.x1)) / (mlx->p.x2 - mlx->p.x1)) + x] = color;
+			mlx->img.data[WIN_WIDTH * (mlx->p.y1 + ((mlx->p.y2 - mlx->p.y1) *
+			(x - mlx->p.x1)) / (mlx->p.x2 - mlx->p.x1)) + x] = color;
 			x++;
 		}
 	}
@@ -49,11 +46,8 @@ void		ft_line(t_mlx *mlx, int color)
 		y = mlx->p.y1;
 		while (y <= mlx->p.y2)
 		{
-			if (mlx->p.y2 == mlx->p.y1)
-				printf("(div0 y2-y1) = %d\n", mlx->p.y2 - mlx->p.y1);
-			else 
-				mlx->img.data[WIN_WIDTH * y + (mlx->p.x1 + ((mlx->p.x2 - mlx->p.x1)
-							* (y - mlx->p.y1)) / (mlx->p.y2 - mlx->p.y1))] = color;
+			mlx->img.data[WIN_WIDTH * y + (mlx->p.x1 + ((mlx->p.x2 - mlx->p.x1)
+			* (y - mlx->p.y1)) / (mlx->p.y2 - mlx->p.y1))] = color;
 			y++;
 		}
 	}
@@ -82,7 +76,9 @@ void		ft_proj(t_mlx *mlx, int *xyz)
 		mlx->p.y2 = WIN_HEIGHT / 5 - xyz[5] + ((c / 2) * xyz[3]
 		+ (c / 2) * xyz[4]) / 10;
 	}
-	if (xyz[2] > 0 || xyz[5] > 0)
+	if ((mlx->p.x1 == mlx->p.x2) || (mlx->p.y1 == mlx->p.y2))
+		printf("gap:%d/%d/%d xy1:%d/%d xy2:%d/%d\n", mlx->p.gap_x, mlx->p.gap_y, mlx->p.gap_z, mlx->p.x1, mlx->p.y1, mlx->p.x2, mlx->p.y2);
+	if (xyz[2] != 0 || xyz[5] != 0)
 		ft_line(mlx, 16761035);
 	else
 		ft_line(mlx, 65535);
