@@ -6,7 +6,7 @@
 /*   By: vimucchi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 17:42:22 by vimucchi          #+#    #+#             */
-/*   Updated: 2019/03/04 18:14:31 by vimucchi         ###   ########.fr       */
+/*   Updated: 2019/03/04 18:57:13 by vimucchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,9 @@ void		ft_line(t_mlx *mlx, int color)
 		x = mlx->p.x1;
 		while (x <= mlx->p.x2)
 		{
-			mlx->img.data[WIN_WIDTH * (mlx->p.y1 + ((mlx->p.y2 - mlx->p.y1) *
-			(x - mlx->p.x1)) / (mlx->p.x2 - mlx->p.x1)) + x] = color;
+			printf("%d:",WIN_WIDTH * (mlx->p.y1 + ((mlx->p.y2 - mlx->p.y1) * (x - mlx->p.x1)) / (mlx->p.x2 - mlx->p.x1)) + x);
+			if ((WIN_WIDTH * (mlx->p.y1 + ((mlx->p.y2 - mlx->p.y1) * (x - mlx->p.x1)) / (mlx->p.x2 - mlx->p.x1)) + x) > 0)
+					mlx->img.data[WIN_WIDTH * (mlx->p.y1 + ((mlx->p.y2 - mlx->p.y1) *	(x - mlx->p.x1)) / (mlx->p.x2 - mlx->p.x1)) + x] = color;
 			x++;
 		}
 	}
@@ -46,11 +47,13 @@ void		ft_line(t_mlx *mlx, int color)
 		y = mlx->p.y1;
 		while (y <= mlx->p.y2)
 		{
-			mlx->img.data[WIN_WIDTH * y + (mlx->p.x1 + ((mlx->p.x2 - mlx->p.x1)
-			* (y - mlx->p.y1)) / (mlx->p.y2 - mlx->p.y1))] = color;
+			printf("%d:",WIN_WIDTH * y + (mlx->p.x1 + ((mlx->p.x2 - mlx->p.x1) * (y - mlx->p.y1)) / (mlx->p.y2 - mlx->p.y1)));
+			if ((WIN_WIDTH * y + (mlx->p.x1 + ((mlx->p.x2 - mlx->p.x1)	* (y - mlx->p.y1)) / (mlx->p.y2 - mlx->p.y1))) > 0)
+				mlx->img.data[WIN_WIDTH * y + (mlx->p.x1 + ((mlx->p.x2 - mlx->p.x1)	* (y - mlx->p.y1)) / (mlx->p.y2 - mlx->p.y1))] = color;
 			y++;
 		}
 	}
+	printf("EOL\n--------------------------------------\n");
 }
 
 void		ft_proj(t_mlx *mlx, int *xyz)
@@ -76,8 +79,8 @@ void		ft_proj(t_mlx *mlx, int *xyz)
 		mlx->p.y2 = WIN_HEIGHT / 5 - xyz[5] + ((c / 2) * xyz[3]
 		+ (c / 2) * xyz[4]) / 10;
 	}
-	if ((mlx->p.x1 == mlx->p.x2) || (mlx->p.y1 == mlx->p.y2))
-		printf("gap:%d/%d/%d xy1:%d/%d xy2:%d/%d\n", mlx->p.gap_x, mlx->p.gap_y, mlx->p.gap_z, mlx->p.x1, mlx->p.y1, mlx->p.x2, mlx->p.y2);
+	if (1 || (mlx->p.x1 == mlx->p.x2) || (mlx->p.y1 == mlx->p.y2))
+		printf("gap:%d/%d/%d xy1:%d/%d xy2:%d/%d z1%d z2%d\n", mlx->p.gap_x, mlx->p.gap_y, mlx->p.gap_z, mlx->p.x1, mlx->p.y1, mlx->p.x2, mlx->p.y2, xyz[2], xyz[5]);
 	if (xyz[2] != 0 || xyz[5] != 0)
 		ft_line(mlx, 16761035);
 	else
@@ -112,11 +115,12 @@ void		ft_init_map(t_mlx *mlx)
 	int		x;
 	int		y;
 
+	printf("----------------NEW---------------\n");
 	if (mlx->init == 0)
 	{
 		mlx->p.gap_x = WIN_WIDTH / (mlx->map.x_tab + 1);
 		mlx->p.gap_y = WIN_HEIGHT / (mlx->map.y_tab + 1);
-		mlx->p.gap_z = (mlx->p.gap_x + mlx->p.gap_y) / 12;
+		mlx->p.gap_z = (mlx->p.gap_x + mlx->p.gap_y) / 15;
 		mlx->init = 1;
 	}
 	if (mlx->p.gap_x == 0)
