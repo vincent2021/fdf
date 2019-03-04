@@ -6,7 +6,7 @@
 /*   By: vimucchi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/02 17:17:01 by vimucchi          #+#    #+#             */
-/*   Updated: 2019/03/02 20:36:19 by vimucchi         ###   ########.fr       */
+/*   Updated: 2019/03/04 13:19:09 by vimucchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ typedef struct		s_coord
 	int				gap_x;
 	int				gap_y;
 	int				gap_z;
-	int				alt;
 }					t_coord;
 
 typedef struct		s_mlx

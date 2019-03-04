@@ -6,7 +6,7 @@
 /*   By: vimucchi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 17:42:22 by vimucchi          #+#    #+#             */
-/*   Updated: 2019/03/03 21:45:46 by vimucchi         ###   ########.fr       */
+/*   Updated: 2019/03/04 13:16:25 by vimucchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,10 @@ void		ft_init_map(t_mlx *mlx)
 		mlx->p.gap_z = (mlx->p.gap_x + mlx->p.gap_y) / 12;
 		mlx->init = 1;
 	}
+	if (mlx->p.gap_x == 0)
+	       	mlx->p.gap_x = 1;
+	if (mlx->p.gap_y == 0)
+	       	mlx->p.gap_y = 1;
 	y = 0;
 	while (y < mlx->map.y_tab)
 	{
