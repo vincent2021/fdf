@@ -109,7 +109,7 @@ t_parse		ft_get_tab(t_line *line)
 			k = 0;
 			while (line->str[i][k])
 			{
-				if (!ft_isdigit(line->str[i][k]))
+				if (!ft_isdigit(line->str[i][k]) && !(line->str[i][k] == '-'))
 					ft_error_map(0);
 				k++;
 			}

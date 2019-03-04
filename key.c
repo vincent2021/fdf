@@ -6,7 +6,7 @@
 /*   By: vimucchi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/02 18:41:00 by vimucchi          #+#    #+#             */
-/*   Updated: 2019/03/04 18:15:39 by vimucchi         ###   ########.fr       */
+/*   Updated: 2019/03/04 19:03:27 by vimucchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int		keyboard(int key, t_mlx *mlx)
 		mlx->p.gap_y--;
 	}
 	if (key == 4 || key == 126)
-		mlx->p.gap_z++;;
+		mlx->p.gap_z++;
 	if (key == 37 || key == 125)
 		mlx->p.gap_z--;
 	ft_new_img(mlx);
