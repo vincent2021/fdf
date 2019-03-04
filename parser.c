@@ -6,7 +6,7 @@
 /*   By: vimucchi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/25 20:00:47 by vimucchi          #+#    #+#             */
-/*   Updated: 2019/03/03 21:25:36 by vimucchi         ###   ########.fr       */
+/*   Updated: 2019/03/04 20:45:45 by vimucchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,6 @@ t_line		*ft_get_map(int fd)
 	return (begin);
 }
 
-void		ft_error_map(int index)
-{
-	if (index == 0)
-		write(2, "Error: The map is invalid\n", 26);
-	if (index == 1)
-		write(2, "Error: Wrong memory allocation\n", 31);
-	exit(1);
-}
-
 int			ft_check_map(t_line *line)
 {
 	t_line	*tmp;
@@ -66,10 +57,26 @@ int			ft_check_map(t_line *line)
 	return (nb_line);
 }
 
+int			ft_check_alt(char *str)
+{
+	int i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (!ft_isdigit(str[i]) && !(str[0] == '-'))
+			ft_error_map(0);
+		i++;
+	}
+	return (0);
+}
+
 int			ft_free_lst(t_line *line)
 {
 	int		i;
 
+	if (!line)
+		ft_error_map(1);
 	if (line->next != NULL)
 		ft_free_lst(line->next);
 	i = 0;
@@ -91,10 +98,7 @@ t_parse		ft_get_tab(t_line *line)
 	t_line	*begin;
 	int		i;
 	int		j;
-	int		k;
 
-	if (!line)
-		ft_error_map(1);
 	begin = line;
 	map.y_tab = ft_check_map(line);
 	map.x_tab = line->x_str;
@@ -104,15 +108,8 @@ t_parse		ft_get_tab(t_line *line)
 	{
 		map.tab[j] = malloc(sizeof(int *) * line->x_str);
 		i = 0;
-		while (i < line->x_str)
+		while (i < line->x_str && ft_check_alt(line->str[i]) == 0)
 		{
-			k = 0;
-			while (line->str[i][k])
-			{
-				if (!ft_isdigit(line->str[i][k]) && !(line->str[i][k] == '-'))
-					ft_error_map(0);
-				k++;
-			}
 			map.tab[j][i] = atoi(line->str[i]);
 			i++;
 		}

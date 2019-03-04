@@ -6,48 +6,36 @@
 /*   By: vimucchi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 17:42:22 by vimucchi          #+#    #+#             */
-/*   Updated: 2019/03/04 19:43:39 by vimucchi         ###   ########.fr       */
+/*   Updated: 2019/03/04 20:57:28 by vimucchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void		ft_swap_xy(int *x1, int *x2, int *y1, int *y2)
-{
-	int		tmp;
-
-	tmp = *x2;
-	*x2 = *x1;
-	*x1 = tmp;
-	tmp = *y2;
-	*y2 = *y1;
-	*y1 = tmp;
-}
-
 int			ft_get_addr(t_mlx *mlx, int i)
 {
-		int addr;
-		int x;
-		int y;
+	int addr;
+	int x;
+	int y;
 
-		addr = 0;
-		if ((mlx->p.x2 - mlx->p.x1) >= (mlx->p.y2 - mlx->p.y1))
-		{
-			x = i;
-			if ((mlx->p.x2 - mlx->p.x1) != 0)
-				addr = WIN_WIDTH * (mlx->p.y1 + ((mlx->p.y2 - mlx->p.y1)
-				* (x - mlx->p.x1)) / (mlx->p.x2 - mlx->p.x1)) + x;
-		}
-		else if ((mlx->p.y2 - mlx->p.y1) > (mlx->p.x2 - mlx->p.x1))
-		{
-			y = i;
-			if ((mlx->p.y2 - mlx->p.y1) != 0)
-				addr = WIN_WIDTH * y + (mlx->p.x1 + ((mlx->p.x2 - mlx->p.x1)
-				* (y - mlx->p.y1)) / (mlx->p.y2 - mlx->p.y1));
-		}
-		if (addr <= 0)
-			return (0);
-		return (addr);
+	addr = 0;
+	if ((mlx->p.x2 - mlx->p.x1) >= (mlx->p.y2 - mlx->p.y1))
+	{
+		x = i;
+		if ((mlx->p.x2 - mlx->p.x1) != 0)
+			addr = WIN_WIDTH * (mlx->p.y1 + ((mlx->p.y2 - mlx->p.y1)
+			* (x - mlx->p.x1)) / (mlx->p.x2 - mlx->p.x1)) + x;
+	}
+	else if ((mlx->p.y2 - mlx->p.y1) > (mlx->p.x2 - mlx->p.x1))
+	{
+		y = i;
+		if ((mlx->p.y2 - mlx->p.y1) != 0)
+			addr = WIN_WIDTH * y + (mlx->p.x1 + ((mlx->p.x2 - mlx->p.x1)
+			* (y - mlx->p.y1)) / (mlx->p.y2 - mlx->p.y1));
+	}
+	if (addr <= 0)
+		return (0);
+	return (addr);
 }
 
 void		ft_line(t_mlx *mlx, int color)
@@ -142,9 +130,9 @@ void		ft_init_map(t_mlx *mlx)
 		mlx->init = 1;
 	}
 	if (mlx->p.gap_x == 0)
-	       	mlx->p.gap_x = 1;
+		mlx->p.gap_x = 1;
 	if (mlx->p.gap_y == 0)
-	       	mlx->p.gap_y = 1;
+		mlx->p.gap_y = 1;
 	y = 0;
 	while (y < mlx->map.y_tab)
 	{
