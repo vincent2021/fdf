@@ -6,7 +6,7 @@
 /*   By: vimucchi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 17:42:22 by vimucchi          #+#    #+#             */
-/*   Updated: 2019/03/05 12:18:41 by vimucchi         ###   ########.fr       */
+/*   Updated: 2019/03/05 12:40:51 by vimucchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ int			ft_get_addr(t_mlx *mlx, int i)
 		x = i;
 		if ((mlx->p.x2 - mlx->p.x1) != 0)
 			addr = WIN_WIDTH * (mlx->p.y1 + ((mlx->p.y2 - mlx->p.y1)
-			* (x - mlx->p.x1)) / (mlx->p.x2 - mlx->p.x1)) + x;
+						* (x - mlx->p.x1)) / (mlx->p.x2 - mlx->p.x1)) + x;
 	}
 	else if ((mlx->p.y2 - mlx->p.y1) > (mlx->p.x2 - mlx->p.x1))
 	{
 		y = i;
 		if ((mlx->p.y2 - mlx->p.y1) != 0)
 			addr = WIN_WIDTH * y + (mlx->p.x1 + ((mlx->p.x2 - mlx->p.x1)
-			* (y - mlx->p.y1)) / (mlx->p.y2 - mlx->p.y1));
+						* (y - mlx->p.y1)) / (mlx->p.y2 - mlx->p.y1));
 	}
 	if (addr <= 0 || addr > (WIN_WIDTH * WIN_HEIGHT))
 		return (0);
@@ -80,13 +80,13 @@ void		ft_proj(t_mlx *mlx, int *xyz)
 	if (mlx->proj == 'i')
 	{
 		mlx->p.x1 = (WIN_WIDTH * 2) / 5 + (c * xyz[0] - c * xyz[1])
-		/ 10;
+			/ 10;
 		mlx->p.x2 = (WIN_WIDTH * 2) / 5 + (c * xyz[3] - c * xyz[4])
-		/ 10;
+			/ 10;
 		mlx->p.y1 = WIN_HEIGHT / 3 - xyz[2] + ((c / 2) * xyz[0]
-		+ (c / 2) * xyz[1]) / 10;
+				+ (c / 2) * xyz[1]) / 10;
 		mlx->p.y2 = WIN_HEIGHT / 3 - xyz[5] + ((c / 2) * xyz[3]
-		+ (c / 2) * xyz[4]) / 10;
+				+ (c / 2) * xyz[4]) / 10;
 	}
 	if (xyz[2] != 0 || xyz[5] != 0)
 		ft_line(mlx, 16761035);
