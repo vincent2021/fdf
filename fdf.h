@@ -6,7 +6,7 @@
 /*   By: vimucchi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/02 17:17:01 by vimucchi          #+#    #+#             */
-/*   Updated: 2019/03/04 20:56:26 by vimucchi         ###   ########.fr       */
+/*   Updated: 2019/03/05 11:26:24 by vimucchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,6 @@ int					keyboard(int key, t_mlx *mlx);
 int					ft_exit(t_mlx *mlx);
 void				ft_swap_xy(int *x1, int *x2, int *y1, int *y2);
 void				ft_error_map(int index);
+void				ft_define_gap(t_mlx *mlx, int zoom);
 
 #endif

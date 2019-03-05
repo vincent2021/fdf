@@ -6,7 +6,7 @@
 /*   By: vimucchi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 17:42:22 by vimucchi          #+#    #+#             */
-/*   Updated: 2019/03/04 20:57:28 by vimucchi         ###   ########.fr       */
+/*   Updated: 2019/03/05 11:24:50 by vimucchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,9 +124,7 @@ void		ft_init_map(t_mlx *mlx)
 
 	if (mlx->init == 0)
 	{
-		mlx->p.gap_x = WIN_WIDTH / (mlx->map.x_tab + 1);
-		mlx->p.gap_y = WIN_HEIGHT / (mlx->map.y_tab + 1);
-		mlx->p.gap_z = (mlx->p.gap_x + mlx->p.gap_y) / 15;
+		ft_define_gap(mlx, 0);
 		mlx->init = 1;
 	}
 	if (mlx->p.gap_x == 0)
