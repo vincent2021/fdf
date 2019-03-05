@@ -6,7 +6,7 @@
 /*   By: vimucchi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/25 20:00:47 by vimucchi          #+#    #+#             */
-/*   Updated: 2019/03/04 20:45:45 by vimucchi         ###   ########.fr       */
+/*   Updated: 2019/03/05 12:02:03 by vimucchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,11 @@ int			ft_check_alt(char *str)
 	int i;
 
 	i = 0;
+	if (str[i] == '-' || str[i] == '+')
+		i++;	
 	while (str[i])
 	{
-		if (!ft_isdigit(str[i]) && !(str[0] == '-'))
+		if (!ft_isdigit(str[i]))
 			ft_error_map(0);
 		i++;
 	}
