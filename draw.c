@@ -6,11 +6,12 @@
 /*   By: vimucchi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 17:42:22 by vimucchi          #+#    #+#             */
-/*   Updated: 2019/03/05 12:40:51 by vimucchi         ###   ########.fr       */
+/*   Updated: 2019/03/05 18:44:40 by sboulaao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include <stdio.h>
 
 int			ft_get_addr(t_mlx *mlx, int i)
 {
@@ -22,16 +23,20 @@ int			ft_get_addr(t_mlx *mlx, int i)
 	if ((mlx->p.x2 - mlx->p.x1) >= (mlx->p.y2 - mlx->p.y1))
 	{
 		x = i;
+		y = (mlx->p.y1 + ((mlx->p.y2 - mlx->p.y1)
+				* (x - mlx->p.x1)) / (mlx->p.x2 - mlx->p.x1));
 		if ((mlx->p.x2 - mlx->p.x1) != 0)
-			addr = WIN_WIDTH * (mlx->p.y1 + ((mlx->p.y2 - mlx->p.y1)
-						* (x - mlx->p.x1)) / (mlx->p.x2 - mlx->p.x1)) + x;
+			addr = WIN_WIDTH * y + x;
 	}
 	else if ((mlx->p.y2 - mlx->p.y1) > (mlx->p.x2 - mlx->p.x1))
 	{
 		y = i;
+		x = (mlx->p.x1 + ((mlx->p.x2 - mlx->p.x1)
+				* (y - mlx->p.y1)) / (mlx->p.y2 - mlx->p.y1));
+		printf("y 2 : %d", y);
+		printf("x 2 : %d\n", x);
 		if ((mlx->p.y2 - mlx->p.y1) != 0)
-			addr = WIN_WIDTH * y + (mlx->p.x1 + ((mlx->p.x2 - mlx->p.x1)
-						* (y - mlx->p.y1)) / (mlx->p.y2 - mlx->p.y1));
+			addr = WIN_WIDTH * y + x;
 	}
 	if (addr <= 0 || addr > (WIN_WIDTH * WIN_HEIGHT))
 		return (0);
@@ -48,18 +53,22 @@ void		ft_line(t_mlx *mlx, int color)
 	if ((mlx->p.x2 - mlx->p.x1) >= (mlx->p.y2 - mlx->p.y1))
 	{
 		x = mlx->p.x1;
+		y = mlx->p.y1;
 		while (x <= mlx->p.x2)
 		{
-			mlx->img.data[ft_get_addr(mlx, x)] = color;
+			if (((x > 0 && x < WIN_WIDTH) || (mlx->p.x2 > 0 && mlx->p.x2 < WIN_WIDTH)) && ((y > 0 && y < WIN_WIDTH) || (mlx->p.y2 > 0 && mlx->p.y2 < WIN_WIDTH)))
+				mlx->img.data[ft_get_addr(mlx, x)] = color;
 			x++;
 		}
 	}
 	else if ((mlx->p.y2 - mlx->p.y1) > (mlx->p.x2 - mlx->p.x1))
 	{
 		y = mlx->p.y1;
+		x = mlx->p.x1;
 		while (y <= mlx->p.y2)
 		{
-			mlx->img.data[ft_get_addr(mlx, y)] = color;
+			if (((x > 0 && x < WIN_WIDTH) || (mlx->p.x2 > 0 && mlx->p.x2 < WIN_WIDTH)) && ((y > 0 && y < WIN_WIDTH) || (mlx->p.y2 > 0 && mlx->p.y2 < WIN_WIDTH)))
+				mlx->img.data[ft_get_addr(mlx, y)] = color;
 			y++;
 		}
 	}
