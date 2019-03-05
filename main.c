@@ -6,7 +6,7 @@
 /*   By: vimucchi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/25 19:55:09 by vimucchi          #+#    #+#             */
-/*   Updated: 2019/03/05 12:23:39 by vimucchi         ###   ########.fr       */
+/*   Updated: 2019/03/05 15:19:57 by vimucchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int			ft_open(char *file)
 	i = ft_strlen(file) - 4;
 	if (i <= 0 || ft_strcmp(file + i, ".fdf"))
 	{
-		write(2, "Error: Usage: ./fdf <file.fdf> -p/-i\n", 36);
+		write(2, "Error: Usage: ./fdf <file.fdf> -p/-i\n", 37);
 		exit(1);
 	}
 	if ((fd = open(file, O_RDONLY)) == -1)

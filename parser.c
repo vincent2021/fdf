@@ -6,7 +6,7 @@
 /*   By: vimucchi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/25 20:00:47 by vimucchi          #+#    #+#             */
-/*   Updated: 2019/03/05 12:41:18 by vimucchi         ###   ########.fr       */
+/*   Updated: 2019/03/05 15:19:39 by vimucchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_line		*ft_get_map(int fd)
 	if (!(lst = malloc(sizeof(t_line))))
 		return (0);
 	begin = lst;
+	lst->str = NULL;
 	while (get_next_line(fd, &line) == 1)
 	{
 		if (!(lst->str = ft_strsplit(line, ' ')))
@@ -54,6 +55,8 @@ int			ft_check_map(t_line *line)
 		tmp = tmp->next;
 		nb_line++;
 	}
+	if (nb_line == 0)
+		ft_error_map(0);
 	return (nb_line);
 }
 
