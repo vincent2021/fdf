@@ -6,7 +6,7 @@
 /*   By: vimucchi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 17:42:22 by vimucchi          #+#    #+#             */
-/*   Updated: 2019/03/05 11:24:50 by vimucchi         ###   ########.fr       */
+/*   Updated: 2019/03/05 11:32:17 by vimucchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int			ft_get_addr(t_mlx *mlx, int i)
 			addr = WIN_WIDTH * y + (mlx->p.x1 + ((mlx->p.x2 - mlx->p.x1)
 			* (y - mlx->p.y1)) / (mlx->p.y2 - mlx->p.y1));
 	}
-	if (addr <= 0)
+	if (addr <= 0 || addr > (WIN_WIDTH * WIN_HEIGHT))
 		return (0);
 	return (addr);
 }
