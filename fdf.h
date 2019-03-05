@@ -6,7 +6,7 @@
 /*   By: vimucchi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/02 17:17:01 by vimucchi          #+#    #+#             */
-/*   Updated: 2019/03/05 11:26:24 by vimucchi         ###   ########.fr       */
+/*   Updated: 2019/03/05 12:26:01 by vimucchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include <stdio.h>
 # include "minilibx/mlx.h"
 # include "libft/includes/libft.h"
 # include "libft/includes/get_next_line.h"
