@@ -6,7 +6,7 @@
 /*   By: vimucchi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 17:42:22 by vimucchi          #+#    #+#             */
-/*   Updated: 2019/03/06 16:40:49 by sboulaao         ###   ########.fr       */
+/*   Updated: 2019/03/06 20:43:33 by sboulaao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,10 +96,11 @@ void		ft_proj(t_mlx *mlx, int *xyz)
 		mlx->p.y2 = mlx->p.offset_y - xyz[5] + ((c / 2) * xyz[3]
 				+ (c / 2) * xyz[4]) / 10;
 	}
-	if (xyz[2] != 0 || xyz[5] != 0)
-		ft_line(mlx, 16761035);
-	else
-		ft_line(mlx, 65535);
+	if ((xyz[2] != 0 || xyz[5] != 0) && mlx->count == 0)
+		mlx->color = 16761035;
+	else if (mlx->count == 0) 
+		mlx->color = 65535;
+	ft_line(mlx, mlx->color);
 }
 
 void		ft_xyz(t_mlx *mlx, int x, int y)

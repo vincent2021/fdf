@@ -6,7 +6,7 @@
 /*   By: sboulaao <sboulaao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 19:56:49 by sboulaao          #+#    #+#             */
-/*   Updated: 2019/03/06 17:54:31 by sboulaao         ###   ########.fr       */
+/*   Updated: 2019/03/06 20:43:35 by sboulaao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,11 @@ int		keyboard(int key, t_mlx *mlx)
 		mlx->p.gap_z--;
 	if (key >= 123 && key <= 126)
 		ft_move_map(key, mlx);
+	if (key == 8)
+	{
+		mlx->color = rand();
+		mlx->count++;
+	}
 	ft_new_img(mlx);
 	ft_menu(mlx);
 	return (0);
