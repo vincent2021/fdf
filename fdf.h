@@ -6,7 +6,7 @@
 /*   By: vimucchi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/02 17:17:01 by vimucchi          #+#    #+#             */
-/*   Updated: 2019/03/06 15:26:27 by vimucchi         ###   ########.fr       */
+/*   Updated: 2019/03/06 16:30:49 by sboulaao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ t_line				*ft_get_map(int fd);
 t_parse				ft_get_tab(t_line *str);
 void				ft_init_map(t_mlx *mlx);
 int					keyboard(int key, t_mlx *mlx);
+void				ft_menu(t_mlx *mlx);
 int					ft_exit(t_mlx *mlx);
 void				ft_swap_xy(int *x1, int *x2, int *y1, int *y2);
 void				ft_error_map(int index);
