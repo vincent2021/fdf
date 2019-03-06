@@ -6,7 +6,7 @@
 /*   By: sboulaao <sboulaao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 19:56:49 by sboulaao          #+#    #+#             */
-/*   Updated: 2019/03/06 16:31:29 by sboulaao         ###   ########.fr       */
+/*   Updated: 2019/03/06 17:54:31 by sboulaao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int		keyboard(int key, t_mlx *mlx)
 		mlx->p.gap_x += 2;
 		mlx->p.gap_y += 2;
 	}
-	if ((key == 78 || key == 27) && mlx->p.gap_x > 1 && mlx->p.gap_y > 1)
+	if ((key == 78 || key == 27) && mlx->p.gap_x > 2 && mlx->p.gap_y > 2)
 	{
 		mlx->p.gap_x -= 2;
 		mlx->p.gap_y -= 2;
