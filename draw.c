@@ -6,12 +6,11 @@
 /*   By: vimucchi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 17:42:22 by vimucchi          #+#    #+#             */
-/*   Updated: 2019/03/05 18:44:40 by sboulaao         ###   ########.fr       */
+/*   Updated: 2019/03/06 15:26:32 by vimucchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include <stdio.h>
 
 int			ft_get_addr(t_mlx *mlx, int i)
 {
@@ -81,20 +80,20 @@ void		ft_proj(t_mlx *mlx, int *xyz)
 	c = 5;
 	if (mlx->proj == 'p')
 	{
-		mlx->p.x1 = mlx->p.gap_x + xyz[0] + (c * xyz[2]) / 10;
-		mlx->p.x2 = mlx->p.gap_x + xyz[3] + (c * xyz[5]) / 10;
-		mlx->p.y1 = mlx->p.gap_y + xyz[1] + (c * xyz[2]) / 20;
-		mlx->p.y2 = mlx->p.gap_y + xyz[4] + (c * xyz[5]) / 20;
+		mlx->p.x1 = mlx->p.offset_x + xyz[0] + (c * xyz[2]) / 10;
+		mlx->p.x2 = mlx->p.offset_x + xyz[3] + (c * xyz[5]) / 10;
+		mlx->p.y1 = mlx->p.offset_y + xyz[1] + (c * xyz[2]) / 20;
+		mlx->p.y2 = mlx->p.offset_y + xyz[4] + (c * xyz[5]) / 20;
 	}
 	if (mlx->proj == 'i')
 	{
-		mlx->p.x1 = (WIN_WIDTH * 2) / 5 + (c * xyz[0] - c * xyz[1])
+		mlx->p.x1 = mlx->p.offset_x + (c * xyz[0] - c * xyz[1])
 			/ 10;
-		mlx->p.x2 = (WIN_WIDTH * 2) / 5 + (c * xyz[3] - c * xyz[4])
+		mlx->p.x2 = mlx->p.offset_x + (c * xyz[3] - c * xyz[4])
 			/ 10;
-		mlx->p.y1 = WIN_HEIGHT / 3 - xyz[2] + ((c / 2) * xyz[0]
+		mlx->p.y1 = mlx->p.offset_y - xyz[2] + ((c / 2) * xyz[0]
 				+ (c / 2) * xyz[1]) / 10;
-		mlx->p.y2 = WIN_HEIGHT / 3 - xyz[5] + ((c / 2) * xyz[3]
+		mlx->p.y2 = mlx->p.offset_y - xyz[5] + ((c / 2) * xyz[3]
 				+ (c / 2) * xyz[4]) / 10;
 	}
 	if (xyz[2] != 0 || xyz[5] != 0)
@@ -133,7 +132,7 @@ void		ft_init_map(t_mlx *mlx)
 
 	if (mlx->init == 0)
 	{
-		ft_define_gap(mlx, 0);
+		ft_define_gap(mlx);
 		mlx->init = 1;
 	}
 	if (mlx->p.gap_x == 0)

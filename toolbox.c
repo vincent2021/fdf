@@ -6,7 +6,7 @@
 /*   By: sboulaao <sboulaao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 19:58:45 by sboulaao          #+#    #+#             */
-/*   Updated: 2019/03/05 12:23:21 by vimucchi         ###   ########.fr       */
+/*   Updated: 2019/03/06 15:22:51 by vimucchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void		ft_error_map(int index)
 	exit(1);
 }
 
-void		ft_define_gap(t_mlx *mlx, int zoom)
+void		ft_define_gap(t_mlx *mlx)
 {
 	int		gap_x;
 	int		gap_y;
@@ -46,10 +46,17 @@ void		ft_define_gap(t_mlx *mlx, int zoom)
 		gap_y = gap_x;
 	else
 		gap_x = gap_y;
-	if (zoom == 0)
+	mlx->p.gap_x = gap_x;
+	mlx->p.gap_y = gap_y;
+	mlx->p.gap_z = gap_z;
+	if (mlx->proj == 'p')
 	{
-		mlx->p.gap_x = gap_x;
-		mlx->p.gap_y = gap_y;
-		mlx->p.gap_z = gap_z;
+		mlx->p.offset_x = mlx->p.gap_x;
+		mlx->p.offset_y = mlx->p.gap_y;
+	}
+	else
+	{
+		mlx->p.offset_x = WIN_WIDTH * 2 / 5;
+		mlx->p.offset_y = WIN_HEIGHT / 3;
 	}
 }

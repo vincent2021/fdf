@@ -6,7 +6,7 @@
 /*   By: vimucchi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/02 17:17:01 by vimucchi          #+#    #+#             */
-/*   Updated: 2019/03/05 12:26:01 by vimucchi         ###   ########.fr       */
+/*   Updated: 2019/03/06 15:26:27 by vimucchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include "libft/includes/libft.h"
 # include "libft/includes/get_next_line.h"
 # include <fcntl.h>
+# include <stdio.h>
 
 # define WIN_WIDTH 1920
 # define WIN_HEIGHT 1080
@@ -57,6 +58,8 @@ typedef struct		s_coord
 	int				gap_x;
 	int				gap_y;
 	int				gap_z;
+	int				offset_x;
+	int				offset_y;
 }					t_coord;
 
 typedef struct		s_mlx
@@ -77,6 +80,6 @@ int					keyboard(int key, t_mlx *mlx);
 int					ft_exit(t_mlx *mlx);
 void				ft_swap_xy(int *x1, int *x2, int *y1, int *y2);
 void				ft_error_map(int index);
-void				ft_define_gap(t_mlx *mlx, int zoom);
+void				ft_define_gap(t_mlx *mlx);
 
 #endif
