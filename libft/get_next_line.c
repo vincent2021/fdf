@@ -6,7 +6,7 @@
 /*   By: vimucchi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 13:24:52 by vimucchi          #+#    #+#             */
-/*   Updated: 2018/12/03 16:49:31 by vimucchi         ###   ########.fr       */
+/*   Updated: 2019/03/06 15:12:02 by vimucchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int					ft_getline(t_gnl *mem, char **line, int c_rd)
 
 	i = 0;
 	l = ft_strlen(mem->str);
-	while (mem->str[i] && mem->str[i] != '\n')
+	while (mem->str && mem->str[i] && mem->str[i] != '\n')
 		i++;
 	if (c_rd < BUFF_SIZE && (l == i + 1 || (l = i && mem->str[i] != '\n')))
 	{
@@ -29,7 +29,7 @@ int					ft_getline(t_gnl *mem, char **line, int c_rd)
 		ft_bzero(mem->str, l);
 		return (1);
 	}
-	else if (mem->str[i] == '\n')
+	else if (mem-> str && mem->str[i] == '\n')
 	{
 		*line = ft_strnew(i);
 		*line = ft_strncpy(*line, mem->str, i);
