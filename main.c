@@ -6,7 +6,7 @@
 /*   By: vimucchi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/25 19:55:09 by vimucchi          #+#    #+#             */
-/*   Updated: 2019/03/06 17:51:58 by sboulaao         ###   ########.fr       */
+/*   Updated: 2019/03/06 18:01:35 by sboulaao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	ft_menu(t_mlx *mlx)
 	 mlx_string_put(mlx->ptr, mlx->wdw, 10, 10, 0xFFFFFF, "Commande menu");
 	 mlx_string_put(mlx->ptr, mlx->wdw, 10, 40, 0xFFFFFF, "      --     ");
 	 mlx_string_put(mlx->ptr, mlx->wdw, 10, 70, 0xFFFFFF, "- + : zoom");
-	 mlx_string_put(mlx->ptr, mlx->wdw, 10, 90, 0xFFFFFF, "< > : change altitude");
+	 mlx_string_put(mlx->ptr, mlx->wdw, 10, 90, 0xFFFFFF, "H L : change altitude");
 	 mlx_string_put(mlx->ptr, mlx->wdw, 10, 110, 0xFFFFFF, "up, down, left, rigth, : move map");
 }
 
