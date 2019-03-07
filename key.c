@@ -6,7 +6,7 @@
 /*   By: sboulaao <sboulaao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 19:56:49 by sboulaao          #+#    #+#             */
-/*   Updated: 2019/03/07 19:04:14 by sboulaao         ###   ########.fr       */
+/*   Updated: 2019/03/07 19:11:54 by sboulaao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ int		keyboard(int key, t_mlx *mlx)
 void	ft_menu(t_mlx *mlx)
 {
 	mlx_string_put(mlx->ptr, mlx->wdw, 10, 10, 0xFFFFFF, "Commands:");
-	mlx_string_put(mlx->ptr, mlx->wdw, 10, 40, 0xFFFFFF, "Zoom: +/-");
-	mlx_string_put(mlx->ptr, mlx->wdw, 10, 60, 0xFFFFFF, "Move with arrows");
-	mlx_string_put(mlx->ptr, mlx->wdw, 10, 80, 0xFFFFFF, "+/- altitude: H/L");
+	mlx_string_put(mlx->ptr, mlx->wdw, 10, 40, 0xFFFFFF, "Zoom          : +/-");
+	mlx_string_put(mlx->ptr, mlx->wdw, 10, 60, 0xFFFFFF, "+/- altitude  : H/L");
+	mlx_string_put(mlx->ptr, mlx->wdw, 10, 80, 0xFFFFFF, "color         : c");
+	mlx_string_put(mlx->ptr, mlx->wdw, 10, 100, 0xFFFFFF, "Move maps     : < >");
 }
