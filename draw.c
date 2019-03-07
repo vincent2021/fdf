@@ -6,7 +6,7 @@
 /*   By: vimucchi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 17:42:22 by vimucchi          #+#    #+#             */
-/*   Updated: 2019/03/06 20:43:33 by sboulaao         ###   ########.fr       */
+/*   Updated: 2019/03/07 18:10:25 by vimucchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ void		ft_proj(t_mlx *mlx, int *xyz)
 	}
 	if ((xyz[2] != 0 || xyz[5] != 0) && mlx->count == 0)
 		mlx->color = 16761035;
-	else if (mlx->count == 0) 
+	else if (mlx->count == 0)
 		mlx->color = 65535;
 	ft_line(mlx, mlx->color);
 }
@@ -140,6 +140,7 @@ void		ft_init_map(t_mlx *mlx)
 		mlx->p.gap_x = 1;
 	if (mlx->p.gap_y == 0)
 		mlx->p.gap_y = 1;
+	ft_menu(mlx);
 	y = 0;
 	while (y < mlx->map.y_tab)
 	{

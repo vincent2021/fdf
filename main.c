@@ -6,7 +6,7 @@
 /*   By: vimucchi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/25 19:55:09 by vimucchi          #+#    #+#             */
-/*   Updated: 2019/03/06 18:01:35 by sboulaao         ###   ########.fr       */
+/*   Updated: 2019/03/07 18:14:54 by vimucchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,33 +52,15 @@ void		ft_init_mlx(t_mlx *mlx)
 	t_img	img;
 
 	if (!(mlx->ptr = mlx_init()))
-	{
-		ft_putendl_fd("Error mlx", 1);
-		exit(1);
-	}
+		ft_error_map(2);
 	if (!(mlx->wdw = mlx_new_window(mlx->ptr, WIN_WIDTH, WIN_HEIGHT, "FdF")))
-		{
-			ft_putendl_fd("Error mlx", 1);
-			exit(1);
-		}
+		ft_error_map(2);
 	if (!(img.img_ptr = mlx_new_image(mlx->ptr, WIN_WIDTH, WIN_HEIGHT)))
-			{
-				ft_putendl_fd("Error mlx", 1);
-				exit(1);
-			}
+		ft_error_map(2);
 	img.data = (int *)mlx_get_data_addr(img.img_ptr, &(img.bpp), &(img.s_l),
 			&(img.endian));
 	mlx->img = img;
 	mlx->init = 0;
-}
-
-void	ft_menu(t_mlx *mlx)
-{	
-	 mlx_string_put(mlx->ptr, mlx->wdw, 10, 10, 0xFFFFFF, "Commande menu");
-	 mlx_string_put(mlx->ptr, mlx->wdw, 10, 40, 0xFFFFFF, "      --     ");
-	 mlx_string_put(mlx->ptr, mlx->wdw, 10, 70, 0xFFFFFF, "- + : zoom");
-	 mlx_string_put(mlx->ptr, mlx->wdw, 10, 90, 0xFFFFFF, "H L : change altitude");
-	 mlx_string_put(mlx->ptr, mlx->wdw, 10, 110, 0xFFFFFF, "up, down, left, rigth, : move map");
 }
 
 int			main(int ac, char **av)

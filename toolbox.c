@@ -6,7 +6,7 @@
 /*   By: sboulaao <sboulaao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 19:58:45 by sboulaao          #+#    #+#             */
-/*   Updated: 2019/03/06 15:22:51 by vimucchi         ###   ########.fr       */
+/*   Updated: 2019/03/07 18:04:34 by vimucchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void		ft_error_map(int index)
 		write(2, "Error: The map is invalid\n", 26);
 	if (index == 1)
 		write(2, "Error: Wrong memory allocation\n", 31);
+	if (index == 2)
+		write(2, "Error with mlx\n", 15);
 	exit(1);
 }
 

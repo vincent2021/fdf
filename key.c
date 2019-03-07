@@ -6,7 +6,7 @@
 /*   By: sboulaao <sboulaao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 19:56:49 by sboulaao          #+#    #+#             */
-/*   Updated: 2019/03/06 20:43:35 by sboulaao         ###   ########.fr       */
+/*   Updated: 2019/03/07 18:15:07 by vimucchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	ft_new_img(t_mlx *mlx)
 	mlx_clear_window(mlx->ptr, mlx->wdw);
 	ft_init_map(mlx);
 	mlx_put_image_to_window(mlx->ptr, mlx->wdw, mlx->img.img_ptr, 0, 0);
+	ft_menu(mlx);
 }
 
 void	ft_move_map(int key, t_mlx *mlx)
@@ -59,6 +60,13 @@ int		keyboard(int key, t_mlx *mlx)
 		mlx->count++;
 	}
 	ft_new_img(mlx);
-	ft_menu(mlx);
 	return (0);
+}
+
+void	ft_menu(t_mlx *mlx)
+{
+	mlx_string_put(mlx->ptr, mlx->wdw, 10, 10, 0xFFFFFF, "Commands:");
+	mlx_string_put(mlx->ptr, mlx->wdw, 10, 40, 0xFFFFFF, "Zoom: +/-");
+	mlx_string_put(mlx->ptr, mlx->wdw, 10, 60, 0xFFFFFF, "Move with arrows");
+	mlx_string_put(mlx->ptr, mlx->wdw, 10, 80, 0xFFFFFF, "+/- altitude: H/L");
 }

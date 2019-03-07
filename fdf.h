@@ -85,5 +85,6 @@ int					ft_exit(t_mlx *mlx);
 void				ft_swap_xy(int *x1, int *x2, int *y1, int *y2);
 void				ft_error_map(int index);
 void				ft_define_gap(t_mlx *mlx);
+void				ft_menu(t_mlx *mlx);
 
 #endif
