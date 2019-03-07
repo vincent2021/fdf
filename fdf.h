@@ -6,7 +6,7 @@
 /*   By: vimucchi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/02 17:17:01 by vimucchi          #+#    #+#             */
-/*   Updated: 2019/03/06 20:37:54 by sboulaao         ###   ########.fr       */
+/*   Updated: 2019/03/07 19:00:13 by sboulaao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,6 @@ void				ft_swap_xy(int *x1, int *x2, int *y1, int *y2);
 void				ft_error_map(int index);
 void				ft_define_gap(t_mlx *mlx);
 void				ft_menu(t_mlx *mlx);
+void				ft_proj(t_mlx *mlx, int *xyz);
 
 #endif

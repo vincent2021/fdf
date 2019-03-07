@@ -6,7 +6,7 @@
 #    By: vimucchi <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/12 16:38:13 by vimucchi          #+#    #+#              #
-#    Updated: 2019/03/06 14:55:20 by vimucchi         ###   ########.fr        #
+#    Updated: 2019/03/07 18:58:15 by sboulaao         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ CFLAGS = -Wall -Wextra -Werror
 CC = gcc -g3 -fsanitize=address
 SRC = main.c \
 	parser.c \
-	draw.c \
+	coord.c \
+	proj.c \
 	key.c \
 	toolbox.c
 
