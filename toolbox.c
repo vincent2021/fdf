@@ -6,13 +6,27 @@
 /*   By: sboulaao <sboulaao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 19:58:45 by sboulaao          #+#    #+#             */
-/*   Updated: 2019/03/07 19:07:23 by sboulaao         ###   ########.fr       */
+/*   Updated: 2019/03/08 20:13:18 by vimucchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void		ft_swap_xy(int *x1, int *x2, int *y1, int *y2)
+int			ft_color(t_mlx *mlx, int z1, int z2)
+{
+	if (z1 != 0 || z2 != 0)
+	{
+		if (mlx->color == -1)
+			return(rand());
+		if (mlx->color > 0)
+			return (mlx->color);
+		else
+			return(16761035);
+	}
+	return (65535);
+}	
+
+void		ft_swap_xy(int *x1, int *y1, int *x2, int *y2)
 {
 	int		tmp;
 
@@ -32,6 +46,8 @@ void		ft_error_map(int index)
 		write(2, "Error: Wrong memory allocation\n", 31);
 	if (index == 2)
 		write(2, "Error with mlx\n", 15);
+	if (index == 3)
+		write(2, "Error memory allocation\n", 24);
 	exit(1);
 }
 

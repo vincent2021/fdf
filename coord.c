@@ -6,7 +6,7 @@
 /*   By: sboulaao <sboulaao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 18:57:49 by sboulaao          #+#    #+#             */
-/*   Updated: 2019/03/07 18:58:51 by sboulaao         ###   ########.fr       */
+/*   Updated: 2019/03/08 20:07:19 by vimucchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void		ft_init_map(t_mlx *mlx)
 	{
 		ft_define_gap(mlx);
 		mlx->init = 1;
+		mlx->color = 0;
 	}
 	if (mlx->p.gap_x == 0)
 		mlx->p.gap_x = 1;

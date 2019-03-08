@@ -6,7 +6,7 @@
 /*   By: vimucchi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 18:01:05 by vimucchi          #+#    #+#             */
-/*   Updated: 2019/03/07 19:02:50 by sboulaao         ###   ########.fr       */
+/*   Updated: 2019/03/08 16:38:11 by vimucchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,18 +108,12 @@ t_parse		ft_get_tab(t_line *line)
 	map.y_tab = ft_check_map(line);
 	map.x_tab = line->x_str;
 	if (!(map.tab = (int **)malloc(sizeof(int **) * map.y_tab)))
-	{
-		ft_putendl_fd("err malloc", 2);
-		exit(0);
-	}
+		ft_error_map(3);
 	j = 0;
 	while (line->next)
 	{
 		if (!(map.tab[j] = (int *)malloc(sizeof(int *) * line->x_str)))
-		{
-			ft_putendl_fd("err malloc", 2);
-			exit(0);
-		}
+			ft_error_map(3);
 		i = 0;
 		while (i < line->x_str && ft_check_alt(line->str[i]) == 0)
 		{

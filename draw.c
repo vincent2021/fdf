@@ -6,7 +6,7 @@
 /*   By: vimucchi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 17:42:22 by vimucchi          #+#    #+#             */
-/*   Updated: 2019/03/07 18:10:25 by vimucchi         ###   ########.fr       */
+/*   Updated: 2019/03/08 19:25:00 by vimucchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,19 @@ int			ft_get_addr(t_mlx *mlx, int i)
 	int y;
 
 	addr = 0;
-	if ((mlx->p.x2 - mlx->p.x1) >= (mlx->p.y2 - mlx->p.y1))
+	if (abs(mlx->p.x2 - mlx->p.x1) >= abs(mlx->p.y2 - mlx->p.y1))
 	{
 		x = i;
-		y = (mlx->p.y1 + ((mlx->p.y2 - mlx->p.y1)
-				* (x - mlx->p.x1)) / (mlx->p.x2 - mlx->p.x1));
 		if ((mlx->p.x2 - mlx->p.x1) != 0)
-			addr = WIN_WIDTH * y + x;
+			addr = WIN_WIDTH * (mlx->p.y1 + ((mlx->p.y2 - mlx->p.y1)
+				* (x - mlx->p.x1)) / (mlx->p.x2 - mlx->p.x1)) + x;
 	}
-	else if ((mlx->p.y2 - mlx->p.y1) > (mlx->p.x2 - mlx->p.x1))
+	else if (abs(mlx->p.y2 - mlx->p.y1) > abs(mlx->p.x2 - mlx->p.x1))
 	{
 		y = i;
-		x = (mlx->p.x1 + ((mlx->p.x2 - mlx->p.x1)
-				* (y - mlx->p.y1)) / (mlx->p.y2 - mlx->p.y1));
-		printf("y 2 : %d", y);
-		printf("x 2 : %d\n", x);
 		if ((mlx->p.y2 - mlx->p.y1) != 0)
-			addr = WIN_WIDTH * y + x;
+			addr = WIN_WIDTH * y + mlx->p.x1 + ((mlx->p.x2 - mlx->p.x1)
+				* (y - mlx->p.y1)) / (mlx->p.y2 - mlx->p.y1);
 	}
 	if (addr <= 0 || addr > (WIN_WIDTH * WIN_HEIGHT))
 		return (0);
@@ -47,10 +43,10 @@ void		ft_line(t_mlx *mlx, int color)
 	int		x;
 	int		y;
 
-	if (mlx->p.x1 > mlx->p.x2)
-		ft_swap_xy(&(mlx->p.x1), &(mlx->p.x2), &(mlx->p.y1), &(mlx->p.y2));
-	if ((mlx->p.x2 - mlx->p.x1) >= (mlx->p.y2 - mlx->p.y1))
+	if (abs(mlx->p.x2 - mlx->p.x1) >= abs(mlx->p.y2 - mlx->p.y1))
 	{
+		if (mlx->p.x1 > mlx->p.x2)
+			ft_swap_xy(&(mlx->p.x1), &(mlx->p.x2), &(mlx->p.y1), &(mlx->p.y2));
 		x = mlx->p.x1;
 		y = mlx->p.y1;
 		while (x <= mlx->p.x2)
@@ -60,12 +56,13 @@ void		ft_line(t_mlx *mlx, int color)
 			x++;
 		}
 	}
-	else if ((mlx->p.y2 - mlx->p.y1) > (mlx->p.x2 - mlx->p.x1))
+	else if (abs(mlx->p.y2 - mlx->p.y1) > abs(mlx->p.x2 - mlx->p.x1))
 	{
 		y = mlx->p.y1;
 		x = mlx->p.x1;
 		while (y <= mlx->p.y2)
 		{
+			ft_swap_xy(&(mlx->p.x1), &(mlx->p.y1), &(mlx->p.x2), &(mlx->p.y2));
 			if (((x > 0 && x < WIN_WIDTH) || (mlx->p.x2 > 0 && mlx->p.x2 < WIN_WIDTH)) && ((y > 0 && y < WIN_WIDTH) || (mlx->p.y2 > 0 && mlx->p.y2 < WIN_WIDTH)))
 				mlx->img.data[ft_get_addr(mlx, y)] = color;
 			y++;

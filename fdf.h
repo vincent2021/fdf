@@ -6,7 +6,7 @@
 /*   By: vimucchi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/02 17:17:01 by vimucchi          #+#    #+#             */
-/*   Updated: 2019/03/07 19:00:13 by sboulaao         ###   ########.fr       */
+/*   Updated: 2019/03/08 20:06:57 by vimucchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # include "libft/includes/get_next_line.h"
 # include <fcntl.h>
 # include <stdio.h>
-# include <math.h>
 
 # define WIN_WIDTH 1920
 # define WIN_HEIGHT 1080
@@ -69,7 +68,6 @@ typedef struct		s_mlx
 	void			*wdw;
 	int				init;
 	int				color;
-	int				count;
 	char			proj;
 	t_img			img;
 	t_parse			map;
@@ -87,5 +85,6 @@ void				ft_error_map(int index);
 void				ft_define_gap(t_mlx *mlx);
 void				ft_menu(t_mlx *mlx);
 void				ft_proj(t_mlx *mlx, int *xyz);
+int					ft_color(t_mlx *mlx, int z1, int z2);
 
 #endif
