@@ -6,7 +6,7 @@
 /*   By: vimucchi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/02 17:17:01 by vimucchi          #+#    #+#             */
-/*   Updated: 2019/03/08 20:57:36 by vimucchi         ###   ########.fr       */
+/*   Updated: 2019/03/08 22:46:32 by vimucchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,5 +83,6 @@ void				ft_swap_xy(int *x1, int *y1, int *x2, int *y2);
 void				ft_error_map(int index);
 void				ft_define_gap(t_mlx *mlx);
 int					ft_color(t_mlx *mlx, int z1, int z2);
+int					ft_in_wdw(t_mlx *mlx, char c, int i);
 
 #endif

@@ -6,11 +6,32 @@
 /*   By: sboulaao <sboulaao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 19:58:45 by sboulaao          #+#    #+#             */
-/*   Updated: 2019/03/08 20:59:48 by vimucchi         ###   ########.fr       */
+/*   Updated: 2019/03/08 23:02:58 by vimucchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+int			ft_in_wdw(t_mlx *mlx, char c, int i)
+{
+	if (c == 'x')
+	{
+		if (((i > 0 && i < WIN_WIDTH) ||
+					(mlx->p.x2 > 0 && mlx->p.x2 < WIN_WIDTH))
+				&& ((mlx->p.y1 > 0 && mlx->p.y1 < WIN_HEIGHT)
+					|| (mlx->p.y2 > 0 && mlx->p.y2 < WIN_HEIGHT)))
+			return (1);
+	}
+	if (c == 'y')
+	{
+		if (((mlx->p.x1 > 0 && mlx->p.x1 < WIN_WIDTH)
+					|| (mlx->p.x2 > 0 && mlx->p.x2 < WIN_WIDTH))
+				&& ((i > 0 && i < WIN_HEIGHT)
+					|| (mlx->p.y2 > 0 && mlx->p.y2 < WIN_HEIGHT)))
+			return (1);
+	}
+	return (0);
+}
 
 int			ft_color(t_mlx *mlx, int z1, int z2)
 {
