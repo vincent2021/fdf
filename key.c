@@ -6,7 +6,7 @@
 /*   By: sboulaao <sboulaao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 19:56:49 by sboulaao          #+#    #+#             */
-/*   Updated: 2019/03/08 20:28:06 by vimucchi         ###   ########.fr       */
+/*   Updated: 2019/03/08 20:50:06 by vimucchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	ft_move_map(int key, t_mlx *mlx)
 
 int		keyboard(int key, t_mlx *mlx)
 {
-	printf("%d\n",key);
 	if (key == 53)
 		ft_exit(mlx);
 	if (key == 69 || key == 24)

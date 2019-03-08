@@ -6,7 +6,7 @@
 /*   By: vimucchi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/02 17:17:01 by vimucchi          #+#    #+#             */
-/*   Updated: 2019/03/08 20:06:57 by vimucchi         ###   ########.fr       */
+/*   Updated: 2019/03/08 20:57:36 by vimucchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 # include "libft/includes/libft.h"
 # include "libft/includes/get_next_line.h"
 # include <fcntl.h>
-# include <stdio.h>
 
 # define WIN_WIDTH 1920
 # define WIN_HEIGHT 1080
@@ -80,11 +79,9 @@ void				ft_init_map(t_mlx *mlx);
 int					keyboard(int key, t_mlx *mlx);
 void				ft_menu(t_mlx *mlx);
 int					ft_exit(t_mlx *mlx);
-void				ft_swap_xy(int *x1, int *x2, int *y1, int *y2);
+void				ft_swap_xy(int *x1, int *y1, int *x2, int *y2);
 void				ft_error_map(int index);
 void				ft_define_gap(t_mlx *mlx);
-void				ft_menu(t_mlx *mlx);
-void				ft_proj(t_mlx *mlx, int *xyz);
 int					ft_color(t_mlx *mlx, int z1, int z2);
 
 #endif

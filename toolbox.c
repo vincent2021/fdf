@@ -6,7 +6,7 @@
 /*   By: sboulaao <sboulaao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 19:58:45 by sboulaao          #+#    #+#             */
-/*   Updated: 2019/03/08 20:13:18 by vimucchi         ###   ########.fr       */
+/*   Updated: 2019/03/08 20:59:48 by vimucchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@ int			ft_color(t_mlx *mlx, int z1, int z2)
 	if (z1 != 0 || z2 != 0)
 	{
 		if (mlx->color == -1)
-			return(rand());
+			return (rand());
 		if (mlx->color > 0)
 			return (mlx->color);
 		else
-			return(16761035);
+			return (16761035);
 	}
 	return (65535);
-}	
+}
 
 void		ft_swap_xy(int *x1, int *y1, int *x2, int *y2)
 {

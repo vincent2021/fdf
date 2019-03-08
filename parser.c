@@ -6,7 +6,7 @@
 /*   By: vimucchi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 18:01:05 by vimucchi          #+#    #+#             */
-/*   Updated: 2019/03/08 16:38:11 by vimucchi         ###   ########.fr       */
+/*   Updated: 2019/03/08 20:58:39 by vimucchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_line		*ft_get_map(int fd)
 	return (begin);
 }
 
-int			ft_check_map(t_line *line)
+void		ft_check_map(t_line *line, t_parse *map)
 {
 	t_line	*tmp;
 	int		nb_line;
@@ -57,7 +57,8 @@ int			ft_check_map(t_line *line)
 	}
 	if (nb_line == 0)
 		ft_error_map(0);
-	return (nb_line);
+	map->x_tab = line->x_str;
+	map->y_tab = nb_line;
 }
 
 int			ft_check_alt(char *str)
@@ -105,8 +106,7 @@ t_parse		ft_get_tab(t_line *line)
 	int		j;
 
 	begin = line;
-	map.y_tab = ft_check_map(line);
-	map.x_tab = line->x_str;
+	ft_check_map(line, &map);
 	if (!(map.tab = (int **)malloc(sizeof(int **) * map.y_tab)))
 		ft_error_map(3);
 	j = 0;
