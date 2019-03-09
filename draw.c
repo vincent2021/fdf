@@ -6,7 +6,7 @@
 /*   By: sboulaao <sboulaao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 18:56:02 by sboulaao          #+#    #+#             */
-/*   Updated: 2019/03/09 16:18:42 by vimucchi         ###   ########.fr       */
+/*   Updated: 2019/03/09 16:24:59 by vimucchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,13 @@
 void		ft_line_x(t_mlx *mlx, int color)
 {
 	int		x;
-	int		pxl;
 
 	if (mlx->p.x2 < mlx->p.x1)
 		ft_swap_xy(&(mlx->p.x1), &(mlx->p.y1), &(mlx->p.x2), &(mlx->p.y2));
-	x = mlx->p.x1;
-	while (x <= mlx->p.x2)
+	x = (mlx->p.x1 > 0) ? mlx->p.x1 : 0;
+	while (x <= mlx->p.x2 && x < WIN_WIDTH)
 	{
-		pxl = -1;
-		if ((mlx->p.x2 - mlx->p.x1) != 0)
-			pxl = WIN_WIDTH * (mlx->p.y1 + ((mlx->p.y2 - mlx->p.y1)
-						* (x - mlx->p.x1)) / (mlx->p.x2 - mlx->p.x1)) + x;
-		if (pxl >= 0 && pxl < (WIN_WIDTH * WIN_HEIGHT))
-			mlx->img.data[pxl] = color;
+		mlx_pixel_put(mlx->ptr, mlx->wdw, x,  mlx->p.y1 + ((mlx->p.y2 - mlx->p.y1) * (x - mlx->p.x1)) / (mlx->p.x2 - mlx->p.x1), color);
 		x++;
 	}
 }
@@ -35,19 +29,13 @@ void		ft_line_x(t_mlx *mlx, int color)
 void		ft_line_y(t_mlx *mlx, int color)
 {
 	int		y;
-	int		pxl;
 
 	if (mlx->p.y2 < mlx->p.y1)
 		ft_swap_xy(&(mlx->p.x1), &(mlx->p.y1), &(mlx->p.x2), &(mlx->p.y2));
-	y = mlx->p.y1;
-	while (y <= mlx->p.y2)
+	y = (mlx->p.y1 > 0) ? mlx->p.y1 : 0;
+	while (y <= mlx->p.y2 && y < WIN_HEIGHT)
 	{
-		pxl = -1;
-		if ((mlx->p.y2 - mlx->p.y1) != 0)
-			pxl = WIN_WIDTH * y + (mlx->p.x1 + ((mlx->p.x2 - mlx->p.x1)
-			* (y - mlx->p.y1)) / (mlx->p.y2 - mlx->p.y1));
-		if (pxl >= 0 && pxl < (WIN_WIDTH * WIN_HEIGHT))
-			mlx->img.data[pxl] = color;
+		mlx_pixel_put(mlx->ptr, mlx->wdw, mlx->p.x1 + ((mlx->p.x2 - mlx->p.x1) * (y - mlx->p.y1)) / (mlx->p.y2 - mlx->p.y1), y, color);
 		y++;
 	}
 }

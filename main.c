@@ -6,7 +6,7 @@
 /*   By: vimucchi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/25 19:55:09 by vimucchi          #+#    #+#             */
-/*   Updated: 2019/03/09 15:52:10 by vimucchi         ###   ########.fr       */
+/*   Updated: 2019/03/09 16:25:15 by vimucchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int			main(int ac, char **av)
 		else
 			mlx.proj = 'i';
 		ft_init_map(&mlx);
-		mlx_put_image_to_window(mlx.ptr, mlx.wdw, mlx.img.img_ptr, 0, 0);
+		//mlx_put_image_to_window(mlx.ptr, mlx.wdw, mlx.img.img_ptr, 0, 0);
 		ft_menu(&mlx);
 		mlx_hook(mlx.wdw, 2, 5, keyboard, &mlx);
 		mlx_hook(mlx.wdw, DESTROYNOTIFY, NOEVENTMASK, ft_exit, &mlx);
