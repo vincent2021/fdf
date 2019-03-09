@@ -6,7 +6,7 @@
 /*   By: vimucchi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/02 17:17:01 by vimucchi          #+#    #+#             */
-/*   Updated: 2019/03/09 16:58:51 by vimucchi         ###   ########.fr       */
+/*   Updated: 2019/03/09 17:16:38 by vimucchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 # include "libft/includes/libft.h"
 # include "libft/includes/get_next_line.h"
 # include <fcntl.h>
-# include <stdio.h>
 
 # define WIN_WIDTH 1920
 # define WIN_HEIGHT 1080
