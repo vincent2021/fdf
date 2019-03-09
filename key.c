@@ -6,13 +6,13 @@
 /*   By: sboulaao <sboulaao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 19:56:49 by sboulaao          #+#    #+#             */
-/*   Updated: 2019/03/09 16:01:15 by vimucchi         ###   ########.fr       */
+/*   Updated: 2019/03/09 16:06:37 by vimucchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int 	ft_new_img(t_mlx *mlx)
+int		ft_new_img(t_mlx *mlx)
 {
 	ft_bzero(mlx->img.data, WIN_WIDTH * WIN_HEIGHT * sizeof(int));
 	mlx_clear_window(mlx->ptr, mlx->wdw);
