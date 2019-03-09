@@ -6,11 +6,12 @@
 /*   By: sboulaao <sboulaao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 19:58:45 by sboulaao          #+#    #+#             */
-/*   Updated: 2019/03/08 23:07:59 by vimucchi         ###   ########.fr       */
+/*   Updated: 2019/03/09 12:20:48 by vimucchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include <stdio.h>
 
 int			ft_in_wdw(t_mlx *mlx, char c, int i)
 {
@@ -18,16 +19,18 @@ int			ft_in_wdw(t_mlx *mlx, char c, int i)
 	{
 		if (((i > 0 && i < WIN_WIDTH) ||
 					(mlx->p.x2 > 0 && mlx->p.x2 < WIN_WIDTH))
-				&& ((mlx->p.y1 > 0 && mlx->p.y1 < WIN_HEIGHT)
-					|| (mlx->p.y2 > 0 && mlx->p.y2 < WIN_HEIGHT)))
+				&& ((mlx->p.y1 > 0 && mlx->p.y1 < WIN_WIDTH)
+					|| (mlx->p.y2 > 0 && mlx->p.y2 < WIN_WIDTH)))
+			printf("XLine:x1y1 (%d,%d) x2y2 (%d,%d)\n", i, mlx->p.y1, mlx->p.x2, mlx->p.y2);
 			return (1);
 	}
 	if (c == 'y')
 	{
-		if (((mlx->p.x1 > 0 && mlx->p.x1 < WIN_WIDTH)
-					|| (mlx->p.x2 > 0 && mlx->p.x2 < WIN_WIDTH))
-				&& ((i > 0 && i < WIN_HEIGHT)
-					|| (mlx->p.y2 > 0 && mlx->p.y2 < WIN_HEIGHT)))
+		if (((mlx->p.x1 > 0 && mlx->p.x1 < WIN_WIDTH) ||
+					(mlx->p.x2 > 0 && mlx->p.x2 < WIN_WIDTH))
+				&& ((i > 0 && i < WIN_WIDTH)
+					|| (mlx->p.y2 > 0 && mlx->p.y2 < WIN_WIDTH)))
+			printf("YLine: 1 (%d,%d) 2 (%d,%d)\n", mlx->p.x1, i, mlx->p.x2, mlx->p.y2);
 			return (1);
 	}
 	return (0);

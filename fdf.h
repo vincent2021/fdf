@@ -6,7 +6,7 @@
 /*   By: vimucchi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/02 17:17:01 by vimucchi          #+#    #+#             */
-/*   Updated: 2019/03/08 22:46:32 by vimucchi         ###   ########.fr       */
+/*   Updated: 2019/03/09 12:03:11 by vimucchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include "libft/includes/get_next_line.h"
 # include <fcntl.h>
 
-# define WIN_WIDTH 1920
-# define WIN_HEIGHT 1080
+# define WIN_WIDTH 1080
+# define WIN_HEIGHT 540
 # define NOEVENTMASK 0L
 # define DESTROYNOTIFY 17
 

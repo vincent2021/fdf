@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   proj.c                                             :+:      :+:    :+:   */
+/*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sboulaao <sboulaao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 18:56:02 by sboulaao          #+#    #+#             */
-/*   Updated: 2019/03/08 23:09:22 by vimucchi         ###   ########.fr       */
+/*   Updated: 2019/03/09 00:18:08 by vimucchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void		ft_line_y(t_mlx *mlx, int color)
 	if (mlx->p.y2 < mlx->p.y1)
 		ft_swap_xy(&(mlx->p.x1), &(mlx->p.y1), &(mlx->p.x2), &(mlx->p.y2));
 	y = (mlx->p.y1 > 0) ? mlx->p.y1 : 0;
-	while (y <= mlx->p.y2 && y <= WIN_HEIGHT)
+	while (y <= mlx->p.y2 && y <= WIN_WIDTH)
 	{
 		pxl = 0;
 		if ((mlx->p.y2 - mlx->p.y1) != 0 && ft_in_wdw(mlx, 'y', y) == 1)

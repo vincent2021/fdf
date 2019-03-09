@@ -6,7 +6,7 @@
 /*   By: vimucchi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/25 19:55:09 by vimucchi          #+#    #+#             */
-/*   Updated: 2019/03/08 21:22:56 by vimucchi         ###   ########.fr       */
+/*   Updated: 2019/03/09 13:22:20 by vimucchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,8 @@ int			main(int ac, char **av)
 	int		fd;
 	t_mlx	mlx;
 
-	if (ac == 2 || (ac == 3 && (av[2][1] == 'i' || av[2][1] == 'p')))
+	if (ac == 2 || (ac == 3 && (!ft_strcmp(av[2], "-i")
+					|| !ft_strcmp(av[2], "-p"))))
 	{
 		fd = ft_open(av[1]);
 		mlx.map = ft_get_tab(ft_get_map(fd));
