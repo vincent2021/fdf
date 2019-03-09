@@ -6,7 +6,7 @@
 /*   By: vimucchi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/02 17:17:01 by vimucchi          #+#    #+#             */
-/*   Updated: 2019/03/09 12:03:11 by vimucchi         ###   ########.fr       */
+/*   Updated: 2019/03/09 15:54:11 by vimucchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@
 # include "libft/includes/libft.h"
 # include "libft/includes/get_next_line.h"
 # include <fcntl.h>
+# include <stdio.h>
 
-# define WIN_WIDTH 1080
-# define WIN_HEIGHT 540
+# define WIN_WIDTH 1920
+# define WIN_HEIGHT 1080
 # define NOEVENTMASK 0L
 # define DESTROYNOTIFY 17
 
@@ -83,6 +84,5 @@ void				ft_swap_xy(int *x1, int *y1, int *x2, int *y2);
 void				ft_error_map(int index);
 void				ft_define_gap(t_mlx *mlx);
 int					ft_color(t_mlx *mlx, int z1, int z2);
-int					ft_in_wdw(t_mlx *mlx, char c, int i);
 
 #endif

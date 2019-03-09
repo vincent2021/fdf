@@ -6,7 +6,7 @@
 /*   By: vimucchi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 18:01:05 by vimucchi          #+#    #+#             */
-/*   Updated: 2019/03/08 20:58:39 by vimucchi         ###   ########.fr       */
+/*   Updated: 2019/03/09 15:40:10 by vimucchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ void		ft_check_map(t_line *line, t_parse *map)
 		nb_line++;
 	}
 	if (nb_line == 0)
+		ft_error_map(0);
+	if (line->x_str == 1 && nb_line == 1)
 		ft_error_map(0);
 	map->x_tab = line->x_str;
 	map->y_tab = nb_line;

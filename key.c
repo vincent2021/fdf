@@ -6,19 +6,20 @@
 /*   By: sboulaao <sboulaao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 19:56:49 by sboulaao          #+#    #+#             */
-/*   Updated: 2019/03/08 22:32:43 by vimucchi         ###   ########.fr       */
+/*   Updated: 2019/03/09 16:01:15 by vimucchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	ft_new_img(t_mlx *mlx)
+int 	ft_new_img(t_mlx *mlx)
 {
 	ft_bzero(mlx->img.data, WIN_WIDTH * WIN_HEIGHT * sizeof(int));
 	mlx_clear_window(mlx->ptr, mlx->wdw);
 	ft_init_map(mlx);
 	mlx_put_image_to_window(mlx->ptr, mlx->wdw, mlx->img.img_ptr, 0, 0);
 	ft_menu(mlx);
+	return (0);
 }
 
 void	ft_move_map(int key, t_mlx *mlx)
@@ -31,6 +32,15 @@ void	ft_move_map(int key, t_mlx *mlx)
 		mlx->p.offset_x += 5;
 	if (key == 123)
 		mlx->p.offset_x -= 5;
+}
+
+void	ft_chg_proj(t_mlx *mlx)
+{
+	if (mlx->proj == 'i')
+		mlx->proj = 'p';
+	else if (mlx->proj == 'p')
+		mlx->proj = 'i';
+	mlx->init = 0;
 }
 
 int		keyboard(int key, t_mlx *mlx)
@@ -57,8 +67,9 @@ int		keyboard(int key, t_mlx *mlx)
 		mlx->color = -1;
 	if (key == 8)
 		mlx->color = rand();
-	ft_new_img(mlx);
-	return (0);
+	if (key == 35)
+		ft_chg_proj(mlx);
+	return (ft_new_img(mlx));
 }
 
 void	ft_menu(t_mlx *mlx)
