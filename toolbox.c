@@ -6,12 +6,34 @@
 /*   By: sboulaao <sboulaao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 19:58:45 by sboulaao          #+#    #+#             */
-/*   Updated: 2019/03/09 16:40:52 by vimucchi         ###   ########.fr       */
+/*   Updated: 2019/03/09 17:03:23 by vimucchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
+int			ft_inscreen(t_mlx *mlx, char c, int i)
+{
+	if (c == 'x')
+	{
+		if (mlx->p.x2 - mlx->p.x1 == 0)
+			return (0);
+		return (1);
+	}
+	if (c == 'y')
+	{
+		if (mlx->p.y2 - mlx->p.y1 == 0)
+			return (0);
+		if (mlx->p.x1 + ((mlx->p.x2 - mlx->p.x1) * (i - mlx->p.y1))
+				/ (mlx->p.y2 - mlx->p.y1) > WIN_WIDTH)
+			return (0);
+		if (mlx->p.x1 + ((mlx->p.x2 - mlx->p.x1) * (i - mlx->p.y1))
+				/ (mlx->p.y2 - mlx->p.y1) < 0)
+			return (0);
+		return (1);
+	}
+	return (0);
+}
 
 int			ft_color(t_mlx *mlx, int z1, int z2)
 {

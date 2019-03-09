@@ -6,7 +6,7 @@
 /*   By: sboulaao <sboulaao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 18:56:02 by sboulaao          #+#    #+#             */
-/*   Updated: 2019/03/09 16:42:22 by vimucchi         ###   ########.fr       */
+/*   Updated: 2019/03/09 16:58:48 by vimucchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ void		ft_line_x(t_mlx *mlx, int color)
 	if (mlx->p.x2 < mlx->p.x1)
 		ft_swap_xy(&(mlx->p.x1), &(mlx->p.y1), &(mlx->p.x2), &(mlx->p.y2));
 	x = (mlx->p.x1 < 0) ? 0 : mlx->p.x1;
-	while (x <= mlx->p.x2 && x <= WIN_WIDTH)
+	while (x <= mlx->p.x2 && x < WIN_WIDTH)
 	{
 		pxl = -1;
-		if ((mlx->p.x2 - mlx->p.x1) != 0)
+		if (ft_inscreen(mlx, 'x', x))
 			pxl = WIN_WIDTH * (mlx->p.y1 + ((mlx->p.y2 - mlx->p.y1)
 						* (x - mlx->p.x1)) / (mlx->p.x2 - mlx->p.x1)) + x;
 		if (pxl >= 0 && pxl < (WIN_WIDTH * WIN_HEIGHT))
@@ -43,7 +43,7 @@ void		ft_line_y(t_mlx *mlx, int color)
 	while (y <= mlx->p.y2 && y < WIN_HEIGHT)
 	{
 		pxl = -1;
-		if ((mlx->p.y2 - mlx->p.y1) != 0 && (mlx->p.x1 + ((mlx->p.x2 - mlx->p.x1) * (y - mlx->p.y1)) / (mlx->p.y2 - mlx->p.y1)) < WIN_WIDTH - 1)
+		if (ft_inscreen(mlx, 'y', y))
 			pxl = WIN_WIDTH * y + (mlx->p.x1 + ((mlx->p.x2 - mlx->p.x1)
 			* (y - mlx->p.y1)) / (mlx->p.y2 - mlx->p.y1));
 		if (pxl >= 0 && pxl < (WIN_WIDTH * WIN_HEIGHT))
