@@ -6,11 +6,12 @@
 /*   By: sboulaao <sboulaao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 19:58:45 by sboulaao          #+#    #+#             */
-/*   Updated: 2019/03/09 15:43:06 by vimucchi         ###   ########.fr       */
+/*   Updated: 2019/03/09 16:40:52 by vimucchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
 
 int			ft_color(t_mlx *mlx, int z1, int z2)
 {
