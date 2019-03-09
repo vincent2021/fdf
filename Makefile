@@ -6,7 +6,7 @@
 #    By: vimucchi <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/12 16:38:13 by vimucchi          #+#    #+#              #
-#    Updated: 2019/03/08 21:44:22 by vimucchi         ###   ########.fr        #
+#    Updated: 2019/03/09 19:35:52 by vimucchi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,7 @@ $(NAME): $(OBJ)
 clean:
 	@rm -f $(OBJ)
 	@make -C libft clean
+	@make -C minilibx clean
 	@echo "\033[32mObjects \033[31mremoved\033[0m"
 
 fclean: clean
